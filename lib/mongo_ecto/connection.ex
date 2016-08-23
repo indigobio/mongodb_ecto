@@ -27,7 +27,7 @@ defmodule Mongo.Ecto.Connection do
   def read(conn, query, opts \\ [])
 
   def read(conn, %ReadQuery{} = query, opts) do
-    opts  = [projection: query.projection, sort: query.order] ++ query.opts ++ opts
+    opts  = [projection: query.projection, sort: query.order, database: query.database] ++ query.opts ++ opts
     coll  = query.coll
     query = query.query
 
